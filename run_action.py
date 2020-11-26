@@ -49,13 +49,9 @@ def main():
     for file in files_to_process:
         print(f"Linting {file}")
 
-        directory = os.path.dirname(file)
-        relative_file = os.path.basename(file)
-
         # run process inside the file's folder
         completed_process = subprocess.run(
-            CHKTEX_COMMAND(relative_file),
-            cwd=directory,
+            CHKTEX_COMMAND(file),
             capture_output=True,
             text=True,
             check=False,
